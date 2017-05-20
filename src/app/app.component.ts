@@ -14,7 +14,7 @@ import {
   // templateUrl: './app.component.html',
   template:`<h1>{{ title }}</h1>
             <button (click)="toggleLight()">ToggleLights</button>
-            <div [@lightsOnOff]="roomState" class="room"></div>
+            <div [@lightsOnOff]="roomState" class="room">Rotate</div>
   `,
   styleUrls: ['./app.component.css'],
   /*
@@ -24,12 +24,12 @@ import {
   animations: [
     trigger('lightsOnOff',[
       state('off',style({
-        backgroundColor: 'black'
+        backgroundColor: 'silver'
       })),
       state('on',style({
         backgroundColor: 'white'
       })),
-      transition('off => on',[animate('2s')]),
+      transition('off <=> on',[animate('2s',style({transform: 'rotate(90deg)'}))]),
       transition('on => off',[animate('2s')])
     ])
   ]
